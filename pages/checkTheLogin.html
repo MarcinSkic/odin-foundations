@@ -4,11 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="checkTheLogin.css">
     <title>JSFundamentals of M.Skic</title>
 </head>
 <body>
     <h1>Check the login</h1>
+    <p>Access Denied!</p>
+    <div class="joke">Kidding :D</div>
     <script>
+        const para = document.querySelector('p');
+        const secret = document.querySelector(".joke");
+
+        console.log(`Value of joke class: ${secret.textContent}`);
+
         let userName = prompt("Who's there?");
         if(userName === "Admin"){
 
@@ -16,6 +24,8 @@
             
             if(password === "TheMaster"){
                 alert("Welcome!");
+                para.textContent = "Hey, super important information on the bottom of the page ;)";
+                secret.style.display = "flex";
             } else if (password === "" || password === null) {
                 alert("Canceled");
             } else {
@@ -28,6 +38,6 @@
             console.log(userName);
             alert("I don't know you");
         }
-    </script>
+    </script>   
 </body>
 </html>

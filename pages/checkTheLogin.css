@@ -1,0 +1,17 @@
+body {
+    margin: 0px;
+}
+
+.joke {
+    margin-top: 10000px;  
+    padding: 10px;
+
+    background-color: darkblue;
+    color: azure;
+    font-size: 30px;
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+    
+}

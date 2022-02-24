@@ -8,5 +8,26 @@
 </head>
 <body>
     <h1>Check the login</h1>
+    <script>
+        let userName = prompt("Who's there?");
+        if(userName === "Admin"){
+
+            let password = prompt("Password?");
+            
+            if(password === "TheMaster"){
+                alert("Welcome!");
+            } else if (password === "" || password === null) {
+                alert("Canceled");
+            } else {
+                console.log(password);
+                alert("Wrong password");
+            }
+        } else if (userName === "" || userName === null) {
+            alert("Canceled");
+        } else {
+            console.log(userName);
+            alert("I don't know you");
+        }
+    </script>
 </body>
 </html>

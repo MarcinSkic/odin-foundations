@@ -40,3 +40,15 @@ console.log(cos);
 let str = "Apple, Banana, Kiwi";
 let part = str.slice(-4);
 console.log(part);
+
+let result = (a+b < 4) ? 'Below' : 'Over';
+
+function checkTernaryIf(){
+    let login = prompt("Podaj login");
+    let message = (login == 'Employee') ? 'Hello' :
+            (login == 'Director') ? 'Greetings' : 
+            !login ? 'No login' : '';
+
+    alert(message);
+}
+//checkTernaryIf();

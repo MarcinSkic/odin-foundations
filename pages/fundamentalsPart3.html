@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p></p>
+    <script>
+        function add7(num){
+            return num+7;
+        }
+        function multiply(a,b){
+            return a*b;
+        }
+        function capitalize(text){
+            return `${text.substring(0,1).toUpperCase()}${text.substring(1).toLowerCase()}`
+        }
+        let lastLetter = function(text){
+            return text.substring(text.length-1,text.length);
+        };
+        console.log(capitalize("jestEM soBie WESoły RoMeK"));
+        console.log(lastLetter("jestEM soBie WESoły RoMeK"));
+    </script>
+    <script>
+        let p = document.querySelector('p');
+        let answer = "";
+        //FizzBuzz
+        let endNumber = +prompt("Please enter number for FizzBuzzing");
+        for (let i = 1; i <= endNumber; i++){
+            let isNumber = true;
+            if(i % 3 === 0){
+                answer += "Fizz";
+                isNumber = false;
+            }
+            if(i % 5 === 0){
+                answer += "Buzz";
+                isNumber = false;
+            }
+            if(isNumber){
+                answer += i;
+            }
+            
+            answer += " ";
+        }
+        p.textContent = answer;
+    </script>
+</body>
+</html>

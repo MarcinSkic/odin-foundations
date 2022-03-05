@@ -20,7 +20,7 @@ function WhatTheF__k() {
 
     console.log(phrase);
 }
-WhatTheF__k();
+WhatTheF__k(); //It works!
 
 //console.log(23+9+3122+30+33+2);
 //console.log((4+6+9)/77);
@@ -51,4 +51,22 @@ function checkTernaryIf(){
 
     alert(message);
 }
+
+function checkAge(age){
+    //Original
+    /*if(age > 18){
+        return true;
+    } else {
+        return "Oh no, you are not allowed";
+    }*/
+
+    //return (age > 18) ? true : "Oh no, you are not allowed";
+    return (age > 18) || "Oh no, you are not allowed";
+}
+console.log(checkAge(15));
+
+function min(a,b){
+    return a<b ? a : b;
+}
+console.log(min(60,60));
 //checkTernaryIf();

@@ -1,4 +1,5 @@
 const container = document.querySelector('.container');
+const generateButton = document.querySelector('#generate');
 
 let containerWidth = 400;
 container.style.width = `${containerWidth}px`;
@@ -8,13 +9,29 @@ let squaresInRow = 16;
 
 let divs = [];
 
-for(let i = 0; i < squaresInRow**2; i++){
-    const div = document.createElement('div');
+generateButton.addEventListener('click',createNewGrid);
 
-    div.style.backgroundColor = `#${Math.floor(Math.random()*16777215).toString(16)}`;
-    div.style.width = `${containerWidth/squaresInRow}px`
-    div.classList.toggle('square');
+generateDivs();
+
+function createNewGrid(){
+    while(container.firstChild){
+        container.removeChild(container.lastChild);
+    }
     
-    container.appendChild(div);
-    divs.push(div);
+    generateDivs();
 }
+
+function generateDivs(){
+
+    for(let i = 0; i < squaresInRow**2; i++){
+        const div = document.createElement('div');
+
+        div.style.backgroundColor = `#${Math.floor(Math.random()*16777215).toString(16)}`;
+        div.style.width = `${containerWidth/squaresInRow}px`
+        div.classList.toggle('square');
+        
+        container.appendChild(div);
+        divs.push(div);
+    }
+}
+

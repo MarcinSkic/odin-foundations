@@ -12,10 +12,10 @@ container.style.height = container.style.width;
 
 generateButton.addEventListener('click',createNewGrid);
 
-//document.addEventListener('mousedown',() => mouseDown = true);
-//document.addEventListener('mouseup',() => mouseDown = false);
+document.addEventListener('mousedown',() => mouseDown = true);
+document.addEventListener('mouseup',() => mouseDown = false);
 
-document.addEventListener('click',() => mouseDown = !mouseDown);
+//document.addEventListener('click',() => mouseDown = !mouseDown);
 
 generateDivs();
 
@@ -36,7 +36,12 @@ function generateDivs(){
         div.style.width = `${containerWidth/squaresInRow}px`
         div.classList.toggle('square');
 
+        //To prevent dragging and in result not colouring properly
+        div.addEventListener('dragstart',e => e.preventDefault());
+        div.addEventListener('drop',e => e.preventDefault());
+
         div.addEventListener('mouseenter',colourSquare);
+        div.addEventListener('click',colourSquare);
         
         container.appendChild(div);
         divs.push(div);
@@ -44,8 +49,7 @@ function generateDivs(){
 }
 
 function colourSquare(event){
-    if(mouseDown){
+    if(mouseDown || event.type === 'click'){
         event.target.style.backgroundColor = pencilColor;
-        console.log(event.target);
     }
 }

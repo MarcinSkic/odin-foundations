@@ -2,14 +2,20 @@ const container = document.querySelector('.container');
 const generateButton = document.querySelector('#generate');
 
 let containerWidth = 400;
+let squaresInRow = 16;
+let pencilColor = '#000000';
+let divs = [];
+let mouseDown = false;
+
 container.style.width = `${containerWidth}px`;
 container.style.height = container.style.width;
 
-let squaresInRow = 16;
-
-let divs = [];
-
 generateButton.addEventListener('click',createNewGrid);
+
+//document.addEventListener('mousedown',() => mouseDown = true);
+//document.addEventListener('mouseup',() => mouseDown = false);
+
+document.addEventListener('click',() => mouseDown = !mouseDown);
 
 generateDivs();
 
@@ -29,9 +35,17 @@ function generateDivs(){
         div.style.backgroundColor = `#${Math.floor(Math.random()*16777215).toString(16)}`;
         div.style.width = `${containerWidth/squaresInRow}px`
         div.classList.toggle('square');
+
+        div.addEventListener('mouseenter',colourSquare);
         
         container.appendChild(div);
         divs.push(div);
     }
 }
 
+function colourSquare(event){
+    if(mouseDown){
+        event.target.style.backgroundColor = pencilColor;
+        console.log(event.target);
+    }
+}

@@ -6,14 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <script src="core.js" defer></script>
 </head>
 <body> 
-    <div class="container">
-
+    <div id="header">
+        Etch-a-Sketch
     </div>
-    <button id="generate">New Grid</button>
-    <p>Modes:</p> <input type="radio" name="mode" id="hold" value="hold"> <label for="hold">Hold</label> 
-    <input type="radio" name="mode" id="click" value="click"> <label for="hold">Click</label>
-    <script src="core.js"></script>
+
+    <div id="main">
+        <div id="options">
+            
+            <p>Modes:</p> <input type="radio" name="mode" id="hold" value="hold"> <label for="hold">Hold</label> 
+            <input type="radio" name="mode" id="click" value="click"> <label for="hold">Click</label>
+        </div>
+        <div class="container">
+
+        </div>
+        
+       
+    </div>
+    <button id="generate">Reset board</button>
+
+    <div id="footer">
+        Copyright &copy; 2022 marcinskic <a href="https://github.com/MarcinSkic"><img src="GitHub-Mark-32px.png" style="width: 20px;"></a>
+    </div>
+    
+
 </body>
 </html>

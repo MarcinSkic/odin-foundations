@@ -1,14 +1,15 @@
 const container = document.querySelector('.container');
 const generateButton = document.querySelector('#generate');
 const drawingModeRadioButtons = document.querySelectorAll('input[name="mode"]');
-
+const colorPicker = document.querySelector('input[type="color"]')
 
 let containerWidth = 400;
-let squaresInRow = 64;
+let squaresInRow = 20;
 let pencilColor = '#000000';
 let divs = [];
-let isMouseDown = false;
+let isDrawing = false;
 let defaultMode = "hold";
+let coloringMode = ""
 
 container.style.width = `${containerWidth}px`;
 container.style.height = container.style.width;
@@ -25,18 +26,18 @@ drawingModeRadioButtons.forEach(radio => {
 drawingModeRadioButtons.forEach(radio => radio.addEventListener('change',assignRadioModeChange));
 
 let holdModeDown = function (){
-    isMouseDown = true;
+    isDrawing = true;
 };
 
 let holdModeUp = function () {
-    isMouseDown = false;
+    isDrawing = false;
 };
 
 let clickMode = function () {
-    isMouseDown = !isMouseDown;
+    isDrawing = !isDrawing;
 };
 
-function assignRadioModeChange () {
+function assignRadioModeChange() {
     if(this.checked){
         removeDrawingListeners ();
 
@@ -51,7 +52,7 @@ function switchDrawingMode(mode){
     } else {
         document.addEventListener('click',clickMode);
     }
-    isMouseDown = false;
+    isDrawing = false;
 }
 
 function removeDrawingListeners (){
@@ -59,6 +60,12 @@ function removeDrawingListeners (){
     document.removeEventListener('mouseup',holdModeUp);
 
     document.removeEventListener('click',clickMode);
+}
+
+colorPicker.addEventListener('change',changePenColor);
+
+function changePenColor(event){
+    pencilColor = event.target.value;
 }
 
 switchDrawingMode(defaultMode);
@@ -86,16 +93,16 @@ function generateDivs(){
         div.addEventListener('dragstart',e => e.preventDefault());
         div.addEventListener('drop',e => e.preventDefault());
 
-        div.addEventListener('mouseenter',colourSquare);
-        div.addEventListener('mousedown',colourSquare);
+        div.addEventListener('mouseenter',colorSquare);
+        div.addEventListener('mousedown',colorSquare);
         
         container.appendChild(div);
         divs.push(div);
     }   //#${Math.floor(Math.random()*16777215).toString(16)}
 }
 
-function colourSquare(event){
-    if(isMouseDown || event.type === 'mousedown'){
+function colorSquare(event){
+    if(isDrawing || event.type === 'mousedown'){
         event.target.style.backgroundColor = pencilColor;
     }
 }

@@ -1,6 +1,7 @@
 const container = document.querySelector('.container');
 const generateButton = document.querySelector('#generate');
 const drawingModeRadioButtons = document.querySelectorAll('input[name="mode"]');
+const coloringModeButtons = document.querySelectorAll('.colorMode');
 const colorPicker = document.querySelector('input[type="color"]')
 
 let containerWidth = 400;
@@ -9,7 +10,7 @@ let pencilColor = '#000000';
 let divs = [];
 let isDrawing = false;
 let defaultMode = "hold";
-let coloringMode = ""
+let coloringMode = "pencil"
 
 container.style.width = `${containerWidth}px`;
 container.style.height = container.style.width;
@@ -68,6 +69,12 @@ function changePenColor(event){
     pencilColor = event.target.value;
 }
 
+coloringModeButtons.forEach(button => button.addEventListener('click',switchColoringMode));
+
+function switchColoringMode(event){
+    coloringMode = event.target.value;
+}
+
 switchDrawingMode(defaultMode);
 
 generateDivs();
@@ -98,11 +105,18 @@ function generateDivs(){
         
         container.appendChild(div);
         divs.push(div);
-    }   //#${Math.floor(Math.random()*16777215).toString(16)}
+    }   
 }
 
 function colorSquare(event){
     if(isDrawing || event.type === 'mousedown'){
-        event.target.style.backgroundColor = pencilColor;
+        switch (coloringMode){
+            case 'pencil':
+                event.target.style.backgroundColor = pencilColor;
+                break;
+            case 'rainbow':
+                event.target.style.backgroundColor = '#'+Math.floor(Math.random()*16777215).toString(16);
+                break;
+        }
     }
 }

@@ -2,10 +2,12 @@ const container = document.querySelector('.container');
 const generateButton = document.querySelector('#generate');
 const drawingModeRadioButtons = document.querySelectorAll('input[name="mode"]');
 const coloringModeButtons = document.querySelectorAll('.colorMode');
-const colorPicker = document.querySelector('input[type="color"]')
+const colorPicker = document.querySelector('input[type="color"]');
+const sizeRange = document.querySelector('#gridSize');
+const sizeLabel = document.querySelector('label[for="gridSize"]');
 
 let containerWidth = 400;
-let squaresInRow = 20;
+let squaresInRow = 16;
 let pencilColor = '#000000';
 let divs = [];
 let isDrawing = false;
@@ -75,9 +77,16 @@ function switchColoringMode(event){
     coloringMode = event.target.value;
 }
 
-switchDrawingMode(defaultMode);
+sizeRange.addEventListener('dragstart',e => e.preventDefault());
+sizeRange.addEventListener('drop',e => e.preventDefault());
+sizeRange.addEventListener('change',updateSize);
 
-generateDivs();
+function updateSize(event){
+    squaresInRow = event.target.value;
+    sizeLabel.textContent = `${squaresInRow} x ${squaresInRow}`;
+
+    createNewGrid();
+}
 
 function createNewGrid(){
     while(container.firstChild){
@@ -117,6 +126,13 @@ function colorSquare(event){
             case 'rainbow':
                 event.target.style.backgroundColor = '#'+Math.floor(Math.random()*16777215).toString(16);
                 break;
+            case 'eraser':
+                event.target.style.backgroundColor = '#ffffff';
+                break;
         }
     }
 }
+
+switchDrawingMode(defaultMode);
+
+generateDivs();

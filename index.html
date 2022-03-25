@@ -16,12 +16,16 @@
     <div id="main">
         <div id="options">
             
-            <p>Modes:</p> <input type="radio" name="mode" id="hold" value="hold"> <label for="hold">Hold</label> 
-            <input type="radio" name="mode" id="click" value="click"> <label for="hold">Click</label>
-            <input type="color" name="colorpicker" id="colorpicker">
-            <button class="colorMode" value="pencil">Pencil</button>
+            <div>Drawing Modes</div>
+            <button class="drawingMode active" value="hold">Hold</button>
+            <button class="drawingMode" value="click">Click</button>
+
+            <div>Coloring Modes</div>
+            <button class="colorMode active" value="pencil">Pencil</button>
             <button class="colorMode" value="rainbow">Rainbow</button>
             <button class="colorMode" value="eraser">Eraser</button>
+            <div>Color</div>
+            <input type="color" name="colorpicker" id="colorpicker">
             <label for="gridSize">16 x 16</label>
             <input type="range" id="gridSize" value="16" min="1" max="100">
         </div>

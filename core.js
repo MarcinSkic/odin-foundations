@@ -1,6 +1,6 @@
 const container = document.querySelector('.container');
 const generateButton = document.querySelector('#generate');
-const drawingModeRadioButtons = document.querySelectorAll('input[name="mode"]');
+const drawingModeButtons = document.querySelectorAll('button.drawingMode');
 const coloringModeButtons = document.querySelectorAll('.colorMode');
 const colorPicker = document.querySelector('input[type="color"]');
 const sizeRange = document.querySelector('#gridSize');
@@ -19,14 +19,7 @@ container.style.height = container.style.width;
 
 generateButton.addEventListener('click',createNewGrid);
 
-drawingModeRadioButtons.forEach(radio => {
-    if(radio.value === defaultMode){
-        radio.checked = true;
-        return;
-    }
-});
-
-drawingModeRadioButtons.forEach(radio => radio.addEventListener('change',assignRadioModeChange));
+drawingModeButtons.forEach(button => button.addEventListener('click',assignModeChange));
 
 let holdModeDown = function (){
     isDrawing = true;
@@ -40,12 +33,12 @@ let clickMode = function () {
     isDrawing = !isDrawing;
 };
 
-function assignRadioModeChange() {
-    if(this.checked){
-        removeDrawingListeners ();
+function assignModeChange() {
+    drawingModeButtons.forEach(button => button.classList.remove("active"));
+    this.classList.add("active");
 
-        switchDrawingMode(this.value);
-    }
+    removeDrawingListeners();
+    switchDrawingMode(this.value);
 }
 
 function switchDrawingMode(mode){
@@ -74,7 +67,10 @@ function changePenColor(event){
 coloringModeButtons.forEach(button => button.addEventListener('click',switchColoringMode));
 
 function switchColoringMode(event){
-    coloringMode = event.target.value;
+    coloringMode = this.value;
+
+    coloringModeButtons.forEach(button => button.classList.remove("active"));
+    this.classList.add("active");
 }
 
 sizeRange.addEventListener('dragstart',e => e.preventDefault());

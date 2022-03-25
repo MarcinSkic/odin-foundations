@@ -14,20 +14,28 @@ button {
     font-size: larger;
     color: rgb(30, 40, 49);
     background-color: hsl(180, 100%, 97%);
+    min-width: 100px;
+    opacity: 0.7;
+}
+
+button:hover {
+    background-color: hsl(180, 44%, 86%);
+    opacity: 1;
+}
+
+button.active {
+    color: azure;
+    background-color: rgb(49, 76, 99);
+    opacity: 1;
+}
+
+button[id="generate"] {
+    opacity: 1;
 }
 
 input[type="color"]{
     background-color: rgba(0, 0, 0, 0);
     border: none;
-}
-
-button:hover {
-    background-color: hsl(180, 44%, 86%);
-}
-
-button.active {
-    color: azure;
-    background-color: rgb(30, 40, 49);
 }
 
 #header {
@@ -42,6 +50,13 @@ button.active {
     justify-content: center;
     gap: 100px;
     margin: 0 4%;
+}
+
+#options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
 }
 
 .container {

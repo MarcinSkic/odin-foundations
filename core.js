@@ -11,6 +11,26 @@ function multiply(a,b){
 }
 
 function divide(a,b){
+    if(b === 0){
+        console.log("Huuh?");
+        return false;
+    }
     return a/b;
 }
 
+function operate(operator,a,b){
+    switch(operator){
+        case '+':
+            return add(a,b);
+            break;
+        case '-':
+            return subtract(a,b);
+            break;
+        case '*':
+            return multiply(a,b);
+            break;
+        case '/':
+            return divide(a,b);
+            break;
+    }
+}

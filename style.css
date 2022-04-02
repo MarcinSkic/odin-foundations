@@ -1,0 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+
+main {
+    font-family: 'Audiowide', cursive;
+
+    display: flex;
+    flex-direction: column;
+}

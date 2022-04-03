@@ -1,3 +1,17 @@
+const display = document.querySelector('#display');
+const numbers = document.querySelectorAll('.number');
+console.table(numbers);
+
+numbers.forEach(button => button.addEventListener('click',updateDisplay));
+
+let displayValue = '';
+let loadedNumber = 0;
+
+function updateDisplay(event){
+    displayValue += event.target.textContent;
+    display.textContent = displayValue;
+}
+
 function add(a,b){
     return a+b;
 }
@@ -34,3 +48,4 @@ function operate(operator,a,b){
             break;
     }
 }
+

@@ -1,12 +1,14 @@
 const display = document.querySelector('#display');
 const numbers = document.querySelectorAll('.number');
-const equals = document.querySelector('#equals');
+const equalsButton = document.querySelector('#equals');
 const operators = document.querySelectorAll('.operator');
 
 operators.forEach(operator => operator.addEventListener('click',operate));
 numbers.forEach(button => button.addEventListener('click',numberPressed));
+equalsButton.addEventListener('click',equals);
 
 let isError = false;
+let isDisplayOverrideable = false;
 let displayValue = '';
 let loadedNumber = null;
 let operator = '';
@@ -15,8 +17,13 @@ function numberPressed(event){
     if(isError){
         return;
     }
-
-    displayValue += event.target.textContent;
+    if(isDisplayOverrideable){
+        displayValue = event.target.textContent;
+        isDisplayOverrideable = false;
+    } else {
+        displayValue += event.target.textContent;
+    }
+    
     refreshDisplay();
     tester();
 }
@@ -34,6 +41,15 @@ function operate(event){
     }
     displayValue = '';
     operator = event.target.textContent;
+    tester();
+}
+
+function equals(){
+    if(loadedNumber && displayValue) {
+        calculate();
+    }
+    isDisplayOverrideable = true;
+    operator = '';
     tester();
 }
 
@@ -66,8 +82,7 @@ function calculate(){
             console.log('extra' + displayValue)
             break;
         case '/':
-            displayValue = divide(a,b);
-            isError = true;
+            displayValue = divide(a,b);      
             break;
     }
 
@@ -88,6 +103,7 @@ function multiply(a,b){
 
 function divide(a,b){
     if(b === 0){
+        isError = true;
         return 'ERROR';
     }
     return a/b;

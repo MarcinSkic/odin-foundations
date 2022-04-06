@@ -8,7 +8,6 @@ numbers.forEach(button => button.addEventListener('click',numberPressed));
 equalsButton.addEventListener('click',equals);
 
 let isError = false;
-let isDisplayOverrideable = false;
 let displayValue = '';
 let loadedNumber = null;
 let operator = '';
@@ -17,18 +16,27 @@ function numberPressed(event){
     if(isError){
         return;
     }
-    if(isDisplayOverrideable){
-        displayValue = event.target.textContent;
-        isDisplayOverrideable = false;
-    } else {
-        displayValue += event.target.textContent;
-    }
+
+    displayValue += event.target.textContent;
+
     
     refreshDisplay();
     tester();
 }
 
 function operate(event){
+    tryToCalculate();
+
+    loadedNumber = +display.textContent;
+    operator = event.target.textContent;
+    tester();
+}
+
+function equals(){
+    tryToCalculate();
+}
+
+function tryToCalculate(){
     if(isError){
         return;
     }
@@ -36,25 +44,9 @@ function operate(event){
     if(loadedNumber && displayValue) {
         calculate();
     }
-    if(!loadedNumber){
-        loadedNumber = +displayValue;
-    }
+
     displayValue = '';
-    operator = event.target.textContent;
     tester();
-}
-
-function equals(){
-    if(loadedNumber && displayValue) {
-        calculate();
-    }
-    isDisplayOverrideable = true;
-    operator = '';
-    tester();
-}
-
-function refreshDisplay(){
-    display.textContent = displayValue;
 }
 
 function tester(){
@@ -67,7 +59,7 @@ function calculate(){
     a = loadedNumber;
     b = +displayValue;
 
-    loadedNumber = null;
+    //loadedNumber = b;
     displayValue = '';
 
     switch(operator){
@@ -79,7 +71,6 @@ function calculate(){
             break;
         case 'x':
             displayValue = multiply(a,b);
-            console.log('extra' + displayValue)
             break;
         case '/':
             displayValue = divide(a,b);      
@@ -87,6 +78,10 @@ function calculate(){
     }
 
     refreshDisplay();
+}
+
+function refreshDisplay(){
+    display.textContent = displayValue;
 }
 
 function add(a,b){

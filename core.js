@@ -35,10 +35,12 @@ function operate(event){
 function equals(){
     if(loadedNumber && lastNumberB && !displayValue){
         displayValue = lastNumberB;
-        tryToCalculate();
-    } else {
-        tryToCalculate();
     }
+    tryToCalculate();
+}
+
+function clear(){
+    
 }
 
 function tryToCalculate(){

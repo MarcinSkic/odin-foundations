@@ -10,6 +10,7 @@ equalsButton.addEventListener('click',equals);
 let isError = false;
 let displayValue = '';
 let loadedNumber = null;
+let lastNumberB = null;
 let operator = '';
 
 function numberPressed(event){
@@ -27,13 +28,17 @@ function numberPressed(event){
 function operate(event){
     tryToCalculate();
 
-    loadedNumber = +display.textContent;
     operator = event.target.textContent;
     tester();
 }
 
 function equals(){
-    tryToCalculate();
+    if(loadedNumber && lastNumberB && !displayValue){
+        displayValue = lastNumberB;
+        tryToCalculate();
+    } else {
+        tryToCalculate();
+    }
 }
 
 function tryToCalculate(){
@@ -46,6 +51,7 @@ function tryToCalculate(){
     }
 
     displayValue = '';
+    loadedNumber = +display.textContent;
     tester();
 }
 
@@ -58,8 +64,8 @@ function tester(){
 function calculate(){
     a = loadedNumber;
     b = +displayValue;
+    lastNumberB = b;
 
-    //loadedNumber = b;
     displayValue = '';
 
     switch(operator){

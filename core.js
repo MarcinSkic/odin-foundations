@@ -12,11 +12,14 @@ let displayValue = '';
 let loadedNumber = null;
 let lastNumberB = null;
 let operator = '';
+tester();
 
 function numberPressed(event){
     if(isError){
         return;
     }
+
+    //if(displayValue )
 
     displayValue += event.target.textContent;
 
@@ -28,12 +31,14 @@ function numberPressed(event){
 function operate(event){
     tryToCalculate();
 
+    loadedNumber = +display.textContent;
     operator = event.target.textContent;
     tester();
 }
 
 function equals(){
-    if(loadedNumber && lastNumberB && !displayValue){
+    if(!loadedNumber && lastNumberB && +display.textContent){
+        loadedNumber = +display.textContent;
         displayValue = lastNumberB;
     }
     tryToCalculate();
@@ -52,14 +57,15 @@ function tryToCalculate(){
         calculate();
     }
 
+    loadedNumber = null;
     displayValue = '';
-    loadedNumber = +display.textContent;
     tester();
 }
 
 function tester(){
     console.log("Display: " + displayValue);
     console.log("Loaded number: " + loadedNumber);
+    console.log("Loaded numberB: " + lastNumberB);
     console.log("Operator: " + operator);
 }
 

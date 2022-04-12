@@ -2,10 +2,12 @@ const display = document.querySelector('#display');
 const numbers = document.querySelectorAll('.number');
 const equalsButton = document.querySelector('#equals');
 const operators = document.querySelectorAll('.operator');
+const clearButton = document.querySelector('#clear');
 
 operators.forEach(operator => operator.addEventListener('click',operate));
 numbers.forEach(button => button.addEventListener('click',numberPressed));
 equalsButton.addEventListener('click',equals);
+clearButton.addEventListener('click',clear);
 
 let isError = false;
 let displayValue = '';
@@ -45,7 +47,12 @@ function equals(){
 }
 
 function clear(){
-    
+    loadedNumber = null;
+    lastNumberB = null;
+    operator = '';
+    displayValue = '';
+    display.textContent = '0';
+    tester();
 }
 
 function tryToCalculate(){

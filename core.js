@@ -62,9 +62,9 @@ function tryToCalculate(){
 
     if(loadedNumber && displayValue) {
         calculate();
+        loadedNumber = null;
     }
 
-    loadedNumber = null;
     displayValue = '';
     tester();
 }

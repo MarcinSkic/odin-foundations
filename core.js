@@ -3,11 +3,13 @@ const numbers = document.querySelectorAll('.number');
 const equalsButton = document.querySelector('#equals');
 const operators = document.querySelectorAll('.operator');
 const clearButton = document.querySelector('#clear');
+const dotButton = document.querySelector('#dot');
 
 operators.forEach(operator => operator.addEventListener('click',operate));
 numbers.forEach(button => button.addEventListener('click',numberPressed));
 equalsButton.addEventListener('click',equals);
 clearButton.addEventListener('click',clear);
+dotButton.addEventListener('click',dotPressed);
 
 let isError = false;
 let displayValue = '';
@@ -21,13 +23,19 @@ function numberPressed(event){
         return;
     }
 
-    //if(displayValue )
-
     displayValue += event.target.textContent;
 
     
     refreshDisplay();
     tester();
+}
+
+function dotPressed(event){
+    if(display.textContent.includes('.')) return;
+
+    displayValue += event.target.textContent;
+
+    refreshDisplay();
 }
 
 function operate(event){

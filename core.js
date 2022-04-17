@@ -60,6 +60,7 @@ function clear(){
     operator = '';
     displayValue = '';
     display.textContent = '0';
+    isError = false;
     tester();
 }
 

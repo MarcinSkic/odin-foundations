@@ -1,8 +1,44 @@
 @import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
 
+body {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
 main {
     font-family: 'Audiowide', cursive;
 
     display: flex;
     flex-direction: column;
+    gap: 2px;
+
+    width: 300px;
+    height: 400px;
+}
+
+main * {
+    flex: auto;
+}
+
+#special {
+    flex: 1 1 0;
+}
+
+#display {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+}
+
+.container * {
+    flex: 1;
 }

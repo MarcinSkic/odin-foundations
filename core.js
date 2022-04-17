@@ -31,9 +31,9 @@ function numberPressed(event){
 }
 
 function dotPressed(event){
-    if(display.textContent.includes('.')) return;
+    if(display.textContent.includes('.') || displayValue === '') return;
 
-    displayValue += event.target.textContent;
+    displayValue += '.';
 
     refreshDisplay();
 }

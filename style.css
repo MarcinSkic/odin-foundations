@@ -13,7 +13,8 @@ main {
     flex-direction: column;
     gap: 2px;
 
-    width: 300px;
+
+    width: min(300px, calc(100vw - 10px));
     height: 400px;
 
     box-sizing: content-box;
@@ -34,14 +35,15 @@ main * {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-
     padding: 0 10px;
     overflow: hidden;
 
     font-family: 'Audiowide', cursive;
+    font-size: 30px;
     font-weight: 500;
     background-color:aliceblue ;
 }
+
 
 .container {
     display: flex;

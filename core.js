@@ -4,6 +4,7 @@ const equalsButton = document.querySelector('#equals');
 const operators = document.querySelectorAll('.operator');
 const clearButton = document.querySelector('#clear');
 const dotButton = document.querySelector('#dot');
+const displayContainer = document.querySelector('#displayContainer');
 
 operators.forEach(operator => operator.addEventListener('click',operate));
 numbers.forEach(button => button.addEventListener('click',numberPressed));
@@ -11,6 +12,7 @@ equalsButton.addEventListener('click',equals);
 clearButton.addEventListener('click',clear);
 dotButton.addEventListener('click',dotPressed);
 
+const MAX_CHARACTERS_ON_DISPLAY = 12;
 let isError = false;
 let displayValue = '';
 let loadedNumber = null;
@@ -19,13 +21,15 @@ let operator = '';
 tester();
 
 function numberPressed(event){
-    if(isError){
-        return;
-    }
+    if(isError) return;
 
     displayValue += event.target.textContent;
 
-    
+    if(isOverflowing()) {
+        displayValue = display.textContent;
+        return;
+    };
+
     refreshDisplay();
     tester();
 }
@@ -107,7 +111,29 @@ function calculate(){
             break;
     }
 
+    displayValue = displayValue.toString();
+
+    if(isOverflowing()){
+        let numberDivision = displayValue.split('.');
+        let difference = MAX_CHARACTERS_ON_DISPLAY-numberDivision[0].length;
+
+        if(numberDivision[0].length > MAX_CHARACTERS_ON_DISPLAY){
+            isError = true;
+            displayValue = 'ERROR';
+        } else {
+            if(difference != 0){
+                displayValue = Math.round(+displayValue * Math.pow(10,difference))/Math.pow(10,difference);
+            } else {
+                displayValue = Math.round(+displayValue);
+            }    
+        }
+    }
+
     refreshDisplay();
+}
+
+function isOverflowing(){
+    return MAX_CHARACTERS_ON_DISPLAY < displayValue.length;
 }
 
 function refreshDisplay(){

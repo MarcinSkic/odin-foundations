@@ -18,7 +18,6 @@ let displayValue = '';
 let loadedNumber = null;
 let lastNumberB = null;
 let operator = '';
-tester();
 
 function numberPressed(event){
     if(isError) return;
@@ -31,7 +30,6 @@ function numberPressed(event){
     };
 
     refreshDisplay();
-    tester();
 }
 
 function dotPressed(event){
@@ -49,7 +47,6 @@ function operate(event){
 
     loadedNumber = +display.textContent;
     operator = event.target.textContent;
-    tester();
 }
 
 function transitionEnd (e) {
@@ -73,7 +70,6 @@ function clear(){
     displayValue = '';
     display.textContent = '0';
     isError = false;
-    tester();
 }
 
 function tryToCalculate(){
@@ -87,7 +83,6 @@ function tryToCalculate(){
     }
 
     displayValue = '';
-    tester();
 }
 
 function tester(){

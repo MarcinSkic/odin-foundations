@@ -4,15 +4,15 @@ const equalsButton = document.querySelector('#equals');
 const operators = document.querySelectorAll('.operator');
 const clearButton = document.querySelector('#clear');
 const dotButton = document.querySelector('#dot');
-const displayContainer = document.querySelector('#displayContainer');
 
+display.addEventListener('transitionend',transitionEnd);
 operators.forEach(operator => operator.addEventListener('click',operate));
 numbers.forEach(button => button.addEventListener('click',numberPressed));
 equalsButton.addEventListener('click',equals);
 clearButton.addEventListener('click',clear);
 dotButton.addEventListener('click',dotPressed);
 
-const MAX_CHARACTERS_ON_DISPLAY = 12;
+const MAX_CHARACTERS_ON_DISPLAY = 10;
 let isError = false;
 let displayValue = '';
 let loadedNumber = null;
@@ -43,6 +43,8 @@ function dotPressed(event){
 }
 
 function operate(event){
+    display.classList.add('operate');
+
     tryToCalculate();
 
     loadedNumber = +display.textContent;
@@ -50,7 +52,13 @@ function operate(event){
     tester();
 }
 
+function transitionEnd (e) {
+    this.classList.remove('operate');
+}
+
 function equals(){
+    display.classList.add('operate');
+
     if(!loadedNumber && lastNumberB && +display.textContent){
         loadedNumber = +display.textContent;
         displayValue = lastNumberB;

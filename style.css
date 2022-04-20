@@ -37,6 +37,7 @@ main * {
     align-items: center;
     padding: 0 10px;
     overflow: hidden;
+    transition: all .07s ease;
 
     font-family: 'Audiowide', cursive;
     font-size: 30px;
@@ -44,6 +45,9 @@ main * {
     background-color:aliceblue ;
 }
 
+.operate {
+    color: rgba(0, 0, 0, 0.116);
+}
 
 .container {
     display: flex;
@@ -67,6 +71,7 @@ main * {
 
 .operator, #percent, #sqrt {
     background-color: rgb(15, 53, 75);
+    
 }
 
 .number, #equals, #dot{

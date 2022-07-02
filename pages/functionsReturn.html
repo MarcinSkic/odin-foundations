@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>Function library example</title>
+  <link rel="stylesheet" href="../css/stapleDesign.css">
   <style>
     input {
       font-size: 2em;
@@ -11,13 +12,19 @@
   </style>
 </head>
 <body>
+  <header>
+    <h1>Function return</h1>
+  </header>
+  <a href="../index.html" class="return-to-menu">Return to Index</a>
 
-  <input class="numberInput" type="text">
-  <p></p>
+  <main>
+    <input class="numberInput" type="text">
+    <div class="answer"></div>
+  </main>
 
   <script>
     const input = document.querySelector('.numberInput');
-    const para = document.querySelector('p');
+    const para = document.querySelector('.answer');
 
     function squared(num) {
      return num * num;
@@ -61,7 +68,7 @@
         } else {
             para.textContent = `${num} squared is ${squared(num)}. `;
             para.textContent += `${num} cubed is ${cubed(num)}. `;
-            para.textContent += `${num} factorial is ${factorial(num)}. `;
+            para.textContent += `${num} factorial is ${factorial(num)}.`;
             para.textContent += `${num} square root is ${squareRoot(num)}. `;
             para.textContent += `${num} weirded out by 3n+1 problem goes: ${collatzConjecture(num)}`
         }

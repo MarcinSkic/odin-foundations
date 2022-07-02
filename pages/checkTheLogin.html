@@ -4,13 +4,43 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="checkTheLogin.css">
+    <link rel="stylesheet" href="../css/stapleDesign.css">
     <title>JSFundamentals of M.Skic</title>
+
+    <style>
+        body {
+            margin: 0px;
+        }
+
+        .joke {
+            margin-top: 10000px;  
+            padding: 10px;
+
+            background-color: darkblue;
+            color: azure;
+            font-size: 30px;
+
+            display: none;
+            justify-content: center;
+            align-items: center;
+            
+            align-self: stretch;
+        }
+    </style>
+    
 </head>
 <body>
-    <h1>Check the login</h1>
-    <p>Access Denied!</p>
-    <div class="joke">Kidding :D</div>
+    <header>
+        <h1>Check the login</h1>
+    </header>
+    <a href="../index.html" class="return-to-menu">Return to Index</a>
+    
+    <main class="justify-start">
+        
+        <p>Access Denied!</p>
+        <div class="joke">Kidding :D</div>
+        
+    </main> 
     <script>
         const para = document.querySelector('p');
         const secret = document.querySelector(".joke");
@@ -38,6 +68,6 @@
             console.log(userName);
             alert("I don't know you");
         }
-    </script>   
+    </script>
 </body>
 </html>

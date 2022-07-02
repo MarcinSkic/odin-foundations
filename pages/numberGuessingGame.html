@@ -4,17 +4,8 @@
     <meta charset="utf-8">
 
     <title>Number guessing game</title>
-
+    <link rel="stylesheet" href="../css/stapleDesign.css">
     <style>
-      html {
-        font-family: sans-serif;
-      }
-      body {
-        width: 50%;
-        max-width: 800px;
-        min-width: 480px;
-        margin: 0 auto;
-      }
       .lastResult {
         color: white;
         padding: 3px;
@@ -23,21 +14,25 @@
   </head>
 
   <body>
+    <header>
       <h1>Number guessing game</h1>
-
+    </header>
+    <a href="../index.html" class="return-to-menu">Return to Index</a>
+  
+    <main>
       <p>We have selected a random number between 1 and 100. See if you can guess it in 10 turns or less. We'll tell you if your guess was too high or too low.</p>
 
-<div class="form">
-  <label for="guessField">Enter a guess: </label><input type="text" id="guessField" class="guessField">
-  <input type="submit" value="Submit guess" class="guessSubmit">
-</div>
-
-<div class="resultParas">
-  <p class="guesses"></p>
-  <p class="lastResult"></p>
-  <p class="lowOrHi"></p>
-</div>
-
+      <div class="form">
+        <label for="guessField">Enter a guess: </label><input type="text" id="guessField" class="guessField">
+        <input type="submit" value="Submit guess" class="guessSubmit">
+      </div>
+    
+      <div class="resultParas">
+        <p class="guesses"></p>
+        <p class="lastResult"></p>
+        <p class="lowOrHi"></p>
+      </div>
+    </main>
 </body>
 
 <script>
@@ -89,7 +84,7 @@
 	  guessSubmit.disabled = true;
 	  resetButton = document.createElement('button');
 	  resetButton.textContent = 'Start new game';
-	  document.body.appendChild(resetButton);
+    document.querySelector('main').appendChild(resetButton);
 	  resetButton.addEventListener('click', resetGame);
   }
 

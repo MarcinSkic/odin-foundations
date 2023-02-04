@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etch-a-sketch</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="core.js" defer></script>
+</head>
+<body> 
+    <div id="header">
+        Etch-a-Sketch
+    </div>
+
+    <div id="main">
+        <div id="options">
+            
+            <div>Drawing Modes</div>
+            <button class="drawingMode active" value="hold">Hold</button>
+            <button class="drawingMode" value="click">Click</button>
+
+            <div>Coloring Modes</div>
+            <button class="colorMode active" value="pencil">Pencil</button>
+            <button class="colorMode" value="rainbow">Rainbow</button>
+            <button class="colorMode" value="eraser">Eraser</button>
+            <div>Color</div>
+            <input type="color" name="colorpicker" id="colorpicker">
+            <label for="gridSize">16 x 16</label>
+            <input type="range" id="gridSize" value="16" min="1" max="100">
+        </div>
+        <div class="container">
+
+        </div>
+        
+       
+    </div>
+    <button id="generate">Reset board</button>
+
+    <div id="footer">
+        Copyright &copy; 2022 marcinskic <a href="https://github.com/MarcinSkic"><img src="GitHub-Mark-32px.png" style="width: 20px;"></a>
+    </div>
+    
+
+</body>
+</html>
